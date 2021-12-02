@@ -48,6 +48,8 @@ function ossn_unregister_page($handler) {
  * @access private
  */
 function bobjps_load_page($handler, $page) {
+	echo 'hello';
+	/*
 		global $Bobjps;
 		$context = $handler;
 		if(isset($page) && !empty($page)) {
@@ -77,6 +79,7 @@ function bobjps_load_page($handler, $page) {
 		} else {
 				return bobjps_error_page();
 		}
+	*/
 }
 
 /**

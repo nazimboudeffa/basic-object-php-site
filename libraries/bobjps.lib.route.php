@@ -104,7 +104,7 @@ function current_url($uport = false) {
  * 
  * @return void
  */
-function ossn_register_class(array $classes = array()) {
+function bobjps_register_class(array $classes = array()) {
 		global $Ossn;
 		foreach($classes as $name => $class) {
 				if(!empty($name) && file_exists($class)) {

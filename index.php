@@ -1,5 +1,5 @@
 <?php
-define('BOBJPS__ALLOW_SYSTEM_START', TRUE);
+define('BOBJPS_ALLOW_SYSTEM_START', TRUE);
 require_once('system/start.php');
 //page handler
 $handler = input('h');

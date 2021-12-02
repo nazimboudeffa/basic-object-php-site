@@ -10,7 +10,7 @@ if (!isset($Bobjps)) {
 }
 include_once(dirname(dirname(__FILE__)) . '/libraries/bobjps.lib.route.php');
 
-if (!is_file(bobjphps_route()->configs . 'bobjps.config.site.php') && !is_file(bobjps_route()->configs . 'bobjps.config.db.php')) {
+if (!is_file(bobjps_route()->configs . 'bobjps.config.site.php') && !is_file(bobjps_route()->configs . 'bobjps.config.db.php')) {
 	header("Cache-Control: no-store, no-cache, must-revalidate, max-age=0");
 	header("Cache-Control: post-check=0, pre-check=0", false);
 	header("Pragma: no-cache");

@@ -1,37 +1,19 @@
 <?php
 /**
- * Open Source Social Network
- *
- * @package   (openteknik.com).ossn
- * @author    OSSN Core Team <info@openteknik.com>
- * @copyright (C) OpenTeknik LLC
- * @license   Open Source Social Network License (OSSN LICENSE)  http://www.opensource-socialnetwork.org/licence
- * @link      https://www.opensource-socialnetwork.org/
- */
-
-/*
- * OSSN ACCESS VALUES
- */
-define('OSSN_FRIENDS', 3);
-define('OSSN_PUBLIC', 2);
-define('OSSN_PRIVATE', 1);
-define('OSSN_POW', 'XQIIlW1dqHT35WJD28RkCYPZfVs3uyJjWOQRFcywfic');
-define('OSSN_LNK', 'JB8tHVp+68D2HxVzxvE+B9qnMqriue4toCsGuOgF1P4h4aobZb45twBYU18uKo04n6VohKlpG0ZNKJor9XrTqQ');
-/**
  * Constants
  */
 define('REF', true);
 /*
  * Load site settings , so the setting should not load agian and again
  */
-global $Ossn;
-$settings           = new OssnSite;
-$Ossn->siteSettings = $settings->getAllSettings();
+global $Bobjps;
+$settings           = new BobjpsSite;
+$Bobjps->siteSettings = $settings->getAllSettings();
 
 /*
  * Set exceptions handler 
  */
-set_exception_handler('_ossn_exception_handler');
+set_exception_handler('_bobjps_exception_handler');
 /**
  * ossn_recursive_array_search 
  * Searches the array for a given value and returns the corresponding key if successful
@@ -83,17 +65,17 @@ function ossn_get_userdata($extend = '') {
  *
  * @return object
  */
-function ossn_database_settings() {
-	global $Ossn;
-	if (!isset($Ossn->port)) {
-		$Ossn->port = false;
+function bobjps_database_settings() {
+	global $Bobjps;
+	if (!isset($Bobjps->port)) {
+		$Bobjps->port = false;
 	}
 	$defaults = array(
-		'host' => $Ossn->host,
-		'port' => $Ossn->port,
-		'user' => $Ossn->user,
-		'password' => $Ossn->password,
-		'database' => $Ossn->database
+		'host' => $Bobjps->host,
+		'port' => $Bobjps->port,
+		'user' => $Bobjps->user,
+		'password' => $Bobjps->password,
+		'database' => $Bobjps->database
 	);
 	return arrayObject($defaults);
 }
@@ -338,11 +320,11 @@ function ossn_unset_callback($event, $type, $callback) {
  *
  * @return string or null
  */
-function ossn_site_settings($setting) {
-	global $Ossn;
-	if (isset($Ossn->siteSettings->$setting)) {
+function bobjps_site_settings($setting) {
+	global $Bobjps;
+	if (isset($Bobjps->siteSettings->$setting)) {
 		//allow to override a settings
-		return ossn_call_hook('load:settings', $setting, false, $Ossn->siteSettings->$setting);
+		return bobjps_call_hook('load:settings', $setting, false, $Bobjps->siteSettings->$setting);
 	}
 	return false;
 }
@@ -764,15 +746,15 @@ function ossn_string_decrypt($string = '', $key = '') {
  * @return (void);
  * @access pritvate;
  */
-function ossn_errros() {
-	$settings = ossn_site_settings('display_errors');
-	if ($settings == 'on' || is_file(ossn_route()->www . 'DISPLAY_ERRORS')) {
+function bobjps_errros() {
+	$settings = bobjps_site_settings('display_errors');
+	if ($settings == 'on' || is_file(bobjps_route()->www . 'DISPLAY_ERRORS')) {
 		error_reporting(E_NOTICE ^ ~E_WARNING);
 		
 		ini_set('log_errors', 1);
-		ini_set('error_log', ossn_route()->www . 'error_log');
+		ini_set('error_log', bobpjs_route()->www . 'error_log');
 		
-		set_error_handler('_ossn_php_error_handler');
+		set_error_handler('_bobjps_php_error_handler');
 	} elseif ($settings !== 'on') {
 		ini_set("log_errors", 0);
 		ini_set('display_errors', 'off');
@@ -861,7 +843,7 @@ function ossn_check_update() {
  * @return (html);
  * @access public;
  */
-function _ossn_exception_handler($exception){
+function _bobjps_exception_handler($exception){
 	$time	= time();
 	$session_id = session_id();
 	
@@ -874,7 +856,7 @@ function _ossn_exception_handler($exception){
 	//[E] Improve Error Reporting 
 	//support at least exception message  #1014
 	error_log("[#{$time}|{$params['session_id']}] ".$params['exception']);
-	echo ossn_view('system/handlers/errors', $params);
+	echo bobjps_view('system/handlers/errors', $params);
 }
 /**
  * Set Ajax Data
@@ -942,6 +924,6 @@ function ossn_offset_validate() {
 		unset($_REQUEST['offset']);
 	}
 }
-ossn_errros();
-ossn_register_callback('ossn', 'init', 'ossn_offset_validate');
-ossn_register_callback('ossn', 'init', 'ossn_system');
+bobjps_errros();
+bobjps_register_callback('bobjps', 'init', 'bobjps_offset_validate');
+bobjps_register_callback('bobjps', 'init', 'bobjps_system');
