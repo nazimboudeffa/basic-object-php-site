@@ -1,4 +1,12 @@
 <?php
+/*
+ * OSSN ACCESS VALUES
+ */
+define('OSSN_FRIENDS', 3);
+define('OSSN_PUBLIC', 2);
+define('OSSN_PRIVATE', 1);
+define('OSSN_POW', 'XQIIlW1dqHT35WJD28RkCYPZfVs3uyJjWOQRFcywfic');
+define('OSSN_LNK', 'JB8tHVp+68D2HxVzxvE+B9qnMqriue4toCsGuOgF1P4h4aobZb45twBYU18uKo04n6VohKlpG0ZNKJor9XrTqQ');
 /**
  * Constants
  */

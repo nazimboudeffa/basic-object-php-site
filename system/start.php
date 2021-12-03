@@ -27,9 +27,14 @@ ini_set('session.cookie_httponly', 1);
 //Load session start after classes #1318
 session_start();
 foreach ($Bobjps->libraries as $lib) {
-    if (!include_once(bobjps_route()->libs . "bobjps.lib.{$lib}.php")) {
+	/*
+	if (!include_once(bobjps_route()->libs . "bobjps.lib.{$lib}.php")) {
         throw new exception('Cannot include all libraries');
     }
+	*/
+	echo bobjps_route()->libs;
+	include_once(bobjps_route()->libs . "bobjps.lib.system.php");
+	include_once(bobjps_route()->libs . "bobjps.lib.page.php");
 }
 bobjps_trigger_callback('bobjps', 'init');
 //need to update user last_action 
