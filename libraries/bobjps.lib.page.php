@@ -145,4 +145,4 @@ function ossn_view_metatags() {
 				echo PHP_EOL . implode(PHP_EOL, $results);
 		}
 }
-ossn_register_callback('ossn', 'init', 'ossn_page_metatags');
+bobjps_register_callback('bobjps', 'init', 'bobjps_page_metatags');

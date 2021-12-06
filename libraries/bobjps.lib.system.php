@@ -17,7 +17,6 @@ define('REF', true);
 global $Bobjps;
 $settings           = new BobjpsSite;
 $Bobjps->siteSettings = $settings->getAllSettings();
-
 /*
  * Set exceptions handler 
  */
@@ -265,21 +264,21 @@ function bobjps_trigger_callback($event, $type, $params = null) {
  *
  * @return bool
  */
-function ossn_register_callback($event, $type, $callback, $priority = 200) {
-	global $Ossn;
+function Bobjps_register_callback($event, $type, $callback, $priority = 200) {
+	global $Bobjps;
 	
 	if (empty($event) || empty($type)) {
 		return false;
 	}
 	
-	if (!isset($Ossn->events)) {
-		$Ossn->events = array();
+	if (!isset($Bobjps->events)) {
+		$Bobjps->events = array();
 	}
-	if (!isset($Ossn->events[$event])) {
-		$Ossn->events[$event] = array();
+	if (!isset($Bobjps->events[$event])) {
+		$Bobjps->events[$event] = array();
 	}
-	if (!isset($Ossn->events[$event][$type])) {
-		$Ossn->events[$event][$type] = array();
+	if (!isset($Bobjps->events[$event][$type])) {
+		$Bobjps->events[$event][$type] = array();
 	}
 	
 	if (!is_callable($callback, true)) {
@@ -288,11 +287,11 @@ function ossn_register_callback($event, $type, $callback, $priority = 200) {
 	
 	$priority = max((int) $priority, 0);
 	
-	while (isset($Ossn->events[$event][$type][$priority])) {
+	while (isset($Bobjps->events[$event][$type][$priority])) {
 		$priority++;
 	}
-	$Ossn->events[$event][$type][$priority] = $callback;
-	ksort($Ossn->events[$event][$type]);
+	$Bobjps->events[$event][$type][$priority] = $callback;
+	ksort($Bobjps->events[$event][$type]);
 	return true;
 	
 }

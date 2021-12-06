@@ -32,11 +32,11 @@ foreach ($Bobjps->libraries as $lib) {
         throw new exception('Cannot include all libraries');
     }
 	*/
-	echo bobjps_route()->libs;
 	include_once(bobjps_route()->libs . "bobjps.lib.system.php");
 	include_once(bobjps_route()->libs . "bobjps.lib.page.php");
 }
 bobjps_trigger_callback('bobjps', 'init');
 //need to update user last_action 
 // @note why its here?
+echo "hello";
 update_last_activity();
