@@ -1,3 +1,3 @@
 <?php
-$Bobjps->url = '<<siteurl>>';
+$Bobjps->url = 'http://justcoding';
 $Bobjps->userdata = '<<datadir>>';

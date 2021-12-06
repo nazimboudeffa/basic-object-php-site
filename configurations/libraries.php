@@ -1,7 +1,7 @@
 <?php
 $Bobjps->libraries = array(
 	//'actions',
-	//'input',
+	'input',
 	//'languages',
 	//'relations',
 	//'entities',

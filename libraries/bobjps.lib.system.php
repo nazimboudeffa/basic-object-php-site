@@ -634,7 +634,7 @@ function ossn_validate_filepath($path, $append_slash = TRUE) {
  *
  * @return mix data
  */
-function ossn_error_page() {
+function bobjps_error_page() {
 	if (ossn_is_xhr()) {
 		header("HTTP/1.0 404 Not Found");
 	} else {

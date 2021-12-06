@@ -38,5 +38,4 @@ foreach ($Bobjps->libraries as $lib) {
 bobjps_trigger_callback('bobjps', 'init');
 //need to update user last_action 
 // @note why its here?
-echo "hello";
-update_last_activity();
+//update_last_activity();
